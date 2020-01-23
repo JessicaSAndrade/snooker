@@ -1,25 +1,7 @@
-/* .container {
-  background-image: linear-gradient(
-    to bottom,
-    #207cca 0%,
-    #207cca 15%,
-    #207cca 30%,
-    #4a62fe 89%,
-    #4a62fe 99%,
-    #7db9e8 99%,
-    #4a62fe 99%,
-    #7db9e8 100%,
-    #7db9e8 100%,
-    #7db9e8 100%,
-    #7db9e8 101%
-  );
-} */
-
 .container{
     background-image: url(../img/fundoLogin3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
 }
 
 .login-box {
@@ -44,17 +26,27 @@
   left: calc(50% - 50px);
 }
 
+.avatar{
+  width: 40%;
+  margin-left: 30%;
+}
+
 .inputsLogin {
   margin-top: 50px;
 }
 
+.inputsLoginSenha {
+  margin-top: 30px;
+}
+
+
 .grupoFormularios {
-  margin-top: 100px;
+  margin-top: -50px;
 }
 
 .botoes {
   margin-left: 6%;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 .submit {

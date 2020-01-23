@@ -1,0 +1,113 @@
+.container {
+  background-image: url(../img/fundoLogin3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.login-box {
+  width: 98%;
+  height: 95%;
+  background: rgba(0, 0, 0, 0.84);
+  color: #ffffff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 1%;
+}
+
+.ranking {
+  margin-top: 100px;
+}
+
+.marginsTitulos {
+  margin-left: 10px;
+}
+
+.tabela {
+  margin-top: 0px;
+}
+
+.tabela td {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  color: #ffffff;
+}
+
+.tabela th {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  color: #ffffff;
+}
+
+.margenRight {
+  margin-left: 1px;
+}
+
+.imagemCards {
+  opacity: 1;
+  display: block;
+  height: auto;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+  width: 100%;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.decisao:hover .imagemCards {
+  opacity: 0.4;
+}
+
+.bordasRanking {
+  border-style: solid;
+  height: 680px;
+  border-radius: 10px;
+  margin-top: -30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.bordasHistorico {
+  border-style: solid;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.avatarInicio {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+}
+
+.avatar {
+  width: 15%;
+}
+
+.inputsLogin {
+  margin-top: 50px;
+}
+
+.grupoFormularios {
+  margin-top: -50px;
+}
+
+.botoes {
+  margin-left: 6%;
+  margin-top: 60px;
+}
+
+.submit {
+  border-radius: 4px;
+}
+
+.titulo {
+  margin-top: 15%;
+  margin-bottom: -15%;
+}
+
+.legenda {
+  margin-left: 22%;
+}
