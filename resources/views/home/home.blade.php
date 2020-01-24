@@ -220,7 +220,13 @@
                                                 <td>{{$jogadores->nome_jogador}}</td>
                                                 <td>{{$jogadores->total_ganho}}</td>
                                                 <td>{{$jogadores->data_partida}}</td>
-                                                <td>{{$jogadores->tipo_partida}}</td>
+                                                @if($jogadores->tipo_partida === 'I')
+                                                <td>Individual</td>
+                                                @endif
+                                                @if($jogadores->tipo_partida === 'D')
+                                                <td>Dupla</td>
+                                                @endif
+
                                         </tr>
                                         </tbody>
                                         @endforeach

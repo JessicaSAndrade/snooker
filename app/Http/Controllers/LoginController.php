@@ -13,7 +13,7 @@ class LoginController extends Controller
 {
     public function login()
     {
-        return view('login.login');
+        return view('auth.login');
     }
 
     public function entrar(Request $req)
@@ -22,10 +22,9 @@ class LoginController extends Controller
         if (Auth::attemp(['email' => $dados, 'password' => $dados['password']])) {
             //return view('home.home');
             return redirect()->route('home.home');
-            echo "login";
         }
 
-        return redirect()->route('login.login');
+        return redirect()->route('login');
         echo "erro";
     }
 
