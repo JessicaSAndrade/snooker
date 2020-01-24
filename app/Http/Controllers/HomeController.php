@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use DateTime;
 use Illuminate\Support\Facades\DB;
-use Partida;
-
+// use Partida;
+Use App\Partida;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Método para autenticação ao acesso das páginas de acordo com o login
      *
      * @return void
      */
@@ -23,10 +23,8 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+    /*
+     *   Método de inicio, passando após o login o acesso ao index principal 
      */
     public function index()
     {
@@ -34,6 +32,7 @@ class HomeController extends Controller
         return view('home.home');
     }
 
+    //Método responsável por listar todos os dados na home
     public function listar()
     {
         $listar['listar'] = true;
@@ -47,12 +46,14 @@ class HomeController extends Controller
     }
 
 
+    //Método de logout
     public function sair()
     {
         Auth::logout();
         return redirect()->route('home');
     }
 
+    //Ranking de usuários
     public function ranking()
     {
 
@@ -66,6 +67,7 @@ class HomeController extends Controller
         return view('home.home', compact('ranking', 'jogador'));
     }
 
+    //Função para iniciar a partida em dupla
     public function dupla()
     {
 
@@ -79,6 +81,7 @@ class HomeController extends Controller
         return view('home.home', compact('dupla', 'jogador'));
     }
 
+    //Função para iniciar uma partida individual
     public function individual()
     {
         $individual['individual'] = true;
@@ -91,16 +94,19 @@ class HomeController extends Controller
         return view('home.home', compact('individual', 'jogador'));
     }
 
+
+    // Função para criação de partida
     public function criarPartida(Request $req)
     {
-        $now = new \DateTime();
+        $now = new DateTime();
         $partida = new Partida;
         $partida->partida_id = 19;
         $partida->data_partida = $now;
         $partida->tipo_partida = $req->get('tipo_partida');
         $partida->valor_aposta = $req->get('valor_aposta');
         $partida->save();
-        return redirect()->route('home/criarPartida');
+        Partida::create($partida);
+        return redirect()->route('/home/individual');
 
     //   $dados = $req->all();
 
@@ -113,8 +119,6 @@ class HomeController extends Controller
     //   Jogador::create($dados);
 
 
-    //   $jogador = new Jogador;
-    //   $jogador->nome = $req->get('nome_jogador[]');
 
     //   return redirect()->route('admin.cursos');
 

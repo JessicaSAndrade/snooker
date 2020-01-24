@@ -154,7 +154,7 @@
                                 <div class="bordasRanking">
                                     <div class="row">
                                         <div class="col-8">
-                                    <h1 class="marginsTitulos">Partida Individual
+                                    <h1 class="marginsTitulos">Partida em Dupla
                                         <img src="{{ asset('img/duplaboll.png') }}" alt="logo" class="avatar">
                                     </h1>
                                         </div>
@@ -163,12 +163,12 @@
                                         @csrf
                                         <div class="form-row" style="margin-left: 20px">
                                             @for ($i = 1; $i < 5; $i++)
-                                            <div class="col">
+                                            <div class="col-4">
                                                 <label>Jogador {{ $i }}</label>
                                             <input type="text" name="nome_jogador[]" class="form-control">
                                             </div>
                                             @endFor
-                                            <div class="col">
+                                            <div class="col-4">
                                                 <label>Valor da Aposta</label>
                                             <input type="float" name="valor_aposta" class="form-control">
                                             </div>
@@ -274,17 +274,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
+
+                                   
                                 </div>
                             </div>
-                            <div class="row justify-content-end" style="margin-top: 10%;margin-right: -100px;">
+                            <div class="row justify-content-end" style="margin-top: 5%;margin-right: -100px;">
                                 <form action="{{ route('login.sair') }}"  method="POST">@csrf
                                 <button type="submit" class="btn btn-danger">Sair
                                 </button>
