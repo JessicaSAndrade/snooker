@@ -25,6 +25,10 @@
   margin-left: 10px;
 }
 
+.marginsTitulosHistorico {
+  margin-left: 25px;
+}
+
 .tabela {
   margin-top: 0px;
 }
@@ -84,6 +88,10 @@
 
 .avatar {
   width: 15%;
+}
+
+.avatarFolder {
+  width: 10%;
 }
 
 .inputsLogin {

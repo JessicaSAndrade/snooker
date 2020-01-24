@@ -11,16 +11,17 @@
 |
 */
 
-// Route::get('/', ['as' => 'login.login', 'uses' => 'LoginController@login']);
 Route::post('/login/entrar', ['as' => 'login.entrar', 'uses' => 'LoginController@entrar']);
 Route::post('/login/sair', ['as' => 'login.sair', 'uses' => 'LoginController@sair']);
-
-Route::get('/home/historico', ['as' => 'home.historico', 'uses' => 'HomeController@historico']);
+// Route::get('/home/historico', ['as' => 'home.historico', 'uses' => 'HomeController@historico']);
 Route::get('/home/individual', ['as' => 'home.individual', 'uses' => 'HomeController@individual']);
 Route::get('/home/dupla', ['as' => 'home.dupla', 'uses' => 'HomeController@dupla']);
+Route::get('/home/ranking', ['as' => 'home.ranking', 'uses' => 'HomeController@ranking']);
 
 
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home/listar', ['as' => 'home.home', 'uses' => 'HomeController@listar']);
+Route::get('/home/historico', 'HomeController@historico')->name('home.historico');
+Route::post('/home/criarPartida', ['as' => 'home.criarPartida', 'uses' => 'HomeController@criarPartida']);

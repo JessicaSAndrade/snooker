@@ -70,17 +70,12 @@
                                 <label  for="remember">
                                     {{ __('Remember Me') }}
                                 </label>
-                                @if (Route::has('password.request'))
-                                <a style="margin-left: 100px;" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                                @endif
                             </div>
                         </div>
 
                         <div class="botoes">
-                            <button type="submit" style="width: 45%; margin-right: 15px;" class="btn btn-success" >{{ __('Login') }}</button>
-                            <button type="button" style="width: 45%" class="btn btn-warning" href="{{ route('register') }}">Cadastre-se</button>
+                            <button type="submit" style="width: 94%; margin-right: 15px;" class="btn btn-success" >{{ __('Login') }}</button>
+                            {{-- <button type="button" style="width: 45%" class="btn btn-warning" href="{{ route('register') }}">Cadastre-se</button> --}}
                           </div>
                         </div>
                     </div>

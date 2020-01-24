@@ -7,7 +7,9 @@ use Jogador;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use DateTime;
 use Illuminate\Support\Facades\DB;
+use Partida;
 
 class HomeController extends Controller
 {
@@ -34,14 +36,16 @@ class HomeController extends Controller
 
     public function listar()
     {
+        $listar['listar'] = true;
         $jogador = DB::table('jogador')
-        ->join('it_partida', 'jogador.jogador_id', '=', 'it_partida.jogador_id')
-        ->join('partida', 'jogador.partida_id', '=', 'partida.partida_id')
-        ->select('jogador.jogador_id', 'jogador.nome_jogador', 'it_partida.total_ganho', 'partida.data_partida')
-        ->orderBy('it_partida.total_ganho', 'desc')
-        ->get();
-      return view('home.home',compact('jogador'));
+            ->join('it_partida', 'jogador.jogador_id', '=', 'it_partida.jogador_id')
+            ->join('partida', 'jogador.partida_id', '=', 'partida.partida_id')
+            ->select('jogador.jogador_id', 'jogador.nome_jogador', 'it_partida.total_ganho', 'partida.data_partida')
+            ->orderBy('it_partida.total_ganho', 'desc')
+            ->get();
+        return view('home.home', compact('jogador', 'listar'));
     }
+
 
     public function sair()
     {
@@ -51,25 +55,80 @@ class HomeController extends Controller
 
     public function ranking()
     {
-        Auth::logout();
-        return redirect()->route('home');
+
+        $ranking['ranking'] = true;
+        $jogador = DB::table('jogador')
+        ->join('it_partida', 'jogador.jogador_id', '=', 'it_partida.jogador_id')
+        ->join('partida', 'jogador.partida_id', '=', 'partida.partida_id')
+        ->select('jogador.jogador_id', 'jogador.nome_jogador', 'it_partida.total_ganho', 'partida.data_partida')
+        ->orderBy('it_partida.total_ganho', 'desc')
+        ->get();
+        return view('home.home', compact('ranking', 'jogador'));
     }
 
     public function dupla()
     {
-        Auth::logout();
-        return redirect()->route('home');
+
+        $dupla['dupla'] = true;
+        $jogador = DB::table('jogador')
+        ->join('it_partida', 'jogador.jogador_id', '=', 'it_partida.jogador_id')
+        ->join('partida', 'jogador.partida_id', '=', 'partida.partida_id')
+        ->select('jogador.jogador_id', 'jogador.nome_jogador', 'it_partida.total_ganho', 'partida.data_partida')
+        ->orderBy('it_partida.total_ganho', 'desc')
+        ->get();
+        return view('home.home', compact('dupla', 'jogador'));
     }
 
     public function individual()
     {
-        Auth::logout();
-        return redirect()->route('home');
+        $individual['individual'] = true;
+        $jogador = DB::table('jogador')
+        ->join('it_partida', 'jogador.jogador_id', '=', 'it_partida.jogador_id')
+        ->join('partida', 'jogador.partida_id', '=', 'partida.partida_id')
+        ->select('jogador.jogador_id', 'jogador.nome_jogador', 'it_partida.total_ganho', 'partida.data_partida')
+        ->orderBy('it_partida.total_ganho', 'desc')
+        ->get();
+        return view('home.home', compact('individual', 'jogador'));
     }
 
+    public function criarPartida(Request $req)
+    {
+        $now = new \DateTime();
+        $partida = new Partida;
+        $partida->partida_id = 19;
+        $partida->data_partida = $now;
+        $partida->tipo_partida = $req->get('tipo_partida');
+        $partida->valor_aposta = $req->get('valor_aposta');
+        $partida->save();
+        return redirect()->route('home/criarPartida');
+
+    //   $dados = $req->all();
+
+
+    //   $jogador->nome = $req->get('nome_jogador[]'); // Vem do Form
+    //   $jogador->email = $req->get('email'); // Vem do Form
+    //   $jogador->telefone = $req->get('telefone'); // Vem do Form
+    //   $jogador->save();
+    
+    //   Jogador::create($dados);
+
+
+    //   $jogador = new Jogador;
+    //   $jogador->nome = $req->get('nome_jogador[]');
+
+    //   return redirect()->route('admin.cursos');
+
+    }
     public function historico()
     {
-        Auth::logout();
-        return redirect()->route('home');
+        $historico['historico'] = true;
+        $jogador = DB::table('jogador')
+        ->join('it_partida', 'jogador.jogador_id', '=', 'it_partida.jogador_id')
+        ->join('partida', 'jogador.partida_id', '=', 'partida.partida_id')
+        ->select('jogador.jogador_id', 'jogador.nome_jogador', 'it_partida.total_ganho', 'partida.data_partida', 'partida.partida_id','partida.tipo_partida')
+        ->orderBy('it_partida.total_ganho', 'desc')
+        ->get();
+        return view('home.home', compact('historico', 'jogador'));
+
     }
 }

@@ -8,6 +8,7 @@ class Jogador extends Model
 {
     protected $table = "jogador";
     protected $fillable = [
+        'id',
         'jogador_id',
         'nome_jogador',
         'partida_id'

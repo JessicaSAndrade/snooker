@@ -10,6 +10,7 @@ class Partida extends Model
     protected $fillable = [
         'partida_id',
         'data_partida',
-        'tipo_partida'  
+        'tipo_partida',
+        'valor_aposta'
     ];
 }
